@@ -2,6 +2,9 @@
 
 This repository contains a comprehensive collection of C programming exercises, primarily based on "The C Programming Language" by Kernighan and Ritchie (K&R). The code demonstrates fundamental C programming concepts and problem-solving techniques.
 
+<img width="250" height="300" alt="image" src="https://github.com/user-attachments/assets/a1291654-ddaa-457b-bb89-05dcd11ad7b2" />
+
+
 ## Overview
 
 This collection includes solutions to various programming challenges covering:
