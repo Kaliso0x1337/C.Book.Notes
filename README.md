@@ -1098,7 +1098,7 @@ int bit_count(unsigned int x) {
     }
 }
 ```
-#### tolower program with condtional expression (Exercise 2-11)
+#### tolower program with condtional expression (Exercise 2-10)
 ```c
 #include <ctype.h>
 #include <stdio.h>
