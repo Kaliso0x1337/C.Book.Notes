@@ -1098,6 +1098,37 @@ int bit_count(unsigned int x) {
     }
 }
 ```
+#### tolower program with condtional expression (Exercise 2-11)
+```c
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int ch;
+    
+    for (ch = 0; ch <= 0x7f; ch++)
+    {
+        char lower = (ch >= 'A' && ch <= 'Z') ? (ch + ('a' - 'A')) : ch;
+        
+        printf("char=%c tolower=%#04x\n",
+        (ch >= 32 && ch <= 126) ? ch : '.',
+        lower);
+    }
+    
+    char str[] = "HELLOW WORLD";
+    
+    for (int i = 0; str[i]; i++)
+    {
+        char lower = (str[i] >= 'A' && str[i] <= 'Z') ? (str[i] + ('a' - 'A' )) : str[i];
+    
+        putchar(lower);
+    }
+    
+    putchar('\n');
+    return 0;
+}
+```
 ### 9. Power Function Examples
 
 #### Basic Power Function
