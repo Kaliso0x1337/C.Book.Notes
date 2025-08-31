@@ -1079,8 +1079,25 @@ int main() {
     
     return 0;
 }
-```
 
+
+```
+#### Bit_Count (Exercise 2-9)
+```c
+
+#include <stdio.h>
+
+/* Impropve Dennis x &= (x - 1) CODE*/
+
+int main(void) {
+    
+int bit_count(unsigned int x) {
+    int c = 0;
+    while (x) c++, x &= x - 1;
+    return c;
+    }
+}
+```
 ### 9. Power Function Examples
 
 #### Basic Power Function
