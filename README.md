@@ -1129,6 +1129,27 @@ int main(void)
     return 0;
 }
 ```
+### Question & Exercise 3-1
+ 
+<p>Our binary search makes two tests inside the loop, when one would suffice (at the price of more tests outside). Write a version with only one test inside the loop and measure the difference in run-time.</p>
+
+
+```c
+int binarysearch(int x, int v[], int n) {
+    int l = 0, h = n - 1, m;
+
+    while (l < h) {
+        m = (l + h) / 2;
+        if (x <= v[m])
+            h = m;
+        else
+            l = m + 1;
+    }
+
+    return (l < n && v[l] == x) ? l : -1;
+}
+```
+
 ### 9. Power Function Examples
 
 #### Basic Power Function
