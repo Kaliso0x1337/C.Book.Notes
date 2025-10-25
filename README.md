@@ -1137,40 +1137,17 @@ int main(void)
 ```c
 int binarysearch(int x, int v[], int n) {
 
-
     int l = 0, h = n - 1, m;
 
-
-
-
-
     while (l < h) {
-
-
         m = (l + h) / 2;
-
-
         if (x <= v[m])
-
-
             h = m;
-
-
         else
-
-
             l = m + 1;
 
-
     }
-
-
-
-
-
-    return (l < n && v[l] == x) ? l : -1;
-
-
+ return (l < n && v[l] == x) ? l : -1;
 }
 ```
 ### Question & Exercise 3-2
