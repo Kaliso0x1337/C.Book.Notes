@@ -1134,7 +1134,76 @@ int main(void)
 <p>Our binary search makes two tests inside the loop, when one would suffice (at the price of more tests outside). Write a version with only one test inside the loop and measure the difference in run-time.</p>
 
 
+```
+```
+### Question & Exercise 3-2
+
+<p>write a function escape (s,t) that converts chars like newline and tab into visable escape sequences like \n and \t as it copies the string to t to s use a switch write a function for other directions as well convertng escape sequqnces into real charecters</p>
+
+#include <stdio.h>
+
+void escape(char s[], char t[]) {
+    int i, j;
+    for (i = j = 0; s[i] != '\0'; i++) {
+        switch (s[i]) {
+            case '\n':
+                t[j++] = '\\';
+                t[j++] = 'n';
+                break;
+            case '\t':
+                t[j++] = '\\';
+                t[j++] = 't';
+                break;
+            case '\\':
+                t[j++] = '\\';
+                t[j++] = '\\';
+                break;
+            default:
+                t[j++] = s[i];
+                break;
+            }
+        }
+        t[j] = '\0';
+}
+
+void unescape(char s[], char t[]) {
+    int i, j;
+    for (i = j = 0; s[i] != '\0'; i++) {
+        if (s[i] == '\\') {
+            switch (s[++i]) {
+                case 'n':  t[j++] = '\n'; break;
+                case 't':  t[j++] = '\t'; break;
+                case '\\': t[j++] = '\\'; break;
+                default:
+                    // Copy literally if unknown sequence
+                    t[j++] = '\\';
+                    t[j++] = s[i];
+                    break;
+            }
+        } else {
+            t[j++] = s[i];
+        }
+    }
+    t[j] = '\0';
+}
+
+int main() {
+    char original[] = "Hello\tWorld!\nNew line here.";
+    char escaped[200];
+    char unescaped[200];
+
+    escape(original, escaped);
+    printf("Original:\n%s\n", original);
+    printf("Escaped:\n%s\n", escaped);
+
+    unescape(escaped, unescaped);
+    printf("Unescaped:\n%s\n", unescaped);
+
+    return 0;
+}
+
 ```c
+
 int binarysearch(int x, int v[], int n) {
     int l = 0, h = n - 1, m;
 
