@@ -1134,12 +1134,50 @@ int main(void)
 <p>Our binary search makes two tests inside the loop, when one would suffice (at the price of more tests outside). Write a version with only one test inside the loop and measure the difference in run-time.</p>
 
 
-```
+```c
+int binarysearch(int x, int v[], int n) {
+
+
+    int l = 0, h = n - 1, m;
+
+
+
+
+
+    while (l < h) {
+
+
+        m = (l + h) / 2;
+
+
+        if (x <= v[m])
+
+
+            h = m;
+
+
+        else
+
+
+            l = m + 1;
+
+
+    }
+
+
+
+
+
+    return (l < n && v[l] == x) ? l : -1;
+
+
+}
 ```
 ### Question & Exercise 3-2
 
 <p>write a function escape (s,t) that converts chars like newline and tab into visable escape sequences like \n and \t as it copies the string to t to s use a switch write a function for other directions as well convertng escape sequqnces into real charecters</p>
 
+```c
 #include <stdio.h>
 
 void escape(char s[], char t[]) {
@@ -1200,22 +1238,6 @@ int main() {
     printf("Unescaped:\n%s\n", unescaped);
 
     return 0;
-}
-
-```c
-
-int binarysearch(int x, int v[], int n) {
-    int l = 0, h = n - 1, m;
-
-    while (l < h) {
-        m = (l + h) / 2;
-        if (x <= v[m])
-            h = m;
-        else
-            l = m + 1;
-    }
-
-    return (l < n && v[l] == x) ? l : -1;
 }
 ```
 
