@@ -1269,10 +1269,10 @@ int main(void) {
 }
 
 ```
+### 9. Power Function Example
 
+#### Basic Power Function
 ```c
-### 9. Power Function Examples
-
 #### Basic Power Function
 ```c
 #include <stdio.h>
@@ -1299,7 +1299,6 @@ int power(int base, int n)
     return p;
 }
 ```
-
 ## Key Programming Concepts Demonstrated
 
 ### Basic Concepts
