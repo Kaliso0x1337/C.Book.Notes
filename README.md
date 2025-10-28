@@ -1220,7 +1220,55 @@ int main() {
 ### Question 3.3
 <p>Write a function expand(s1,s2) that expands shorthand notations a-z in the string s1 into the equivalent complete list abc...xyz in s2. Allow for letters of either case and digits, and be prepared to handle cases like a-b-c and z0-9 and -a-z Arrange that a leading or trailing - is taken litterally</p>
 
+```c
+#include <stdio.h>
+#include <ctype.h>
 
+void expand(const char s1[], char s2[]) {
+    int i = 0, j = 0;
+    char c;
+
+    while ((c = s1[i++]) != '\0') {
+        if (s1[i] == '-' && s1[i + 1] != '\0') {
+            char start = c;
+            char end = s1[i + 1];
+
+            if ((isalnum(start) && isalnum(end) && start < end)) {
+                
+                for (char ch = start; ch <= end; ch++)
+                    s2[j++] = ch;
+                i += 2; 
+            } else {
+                
+                s2[j++] = c;
+            }
+        } else {
+            
+            s2[j++] = c;
+        }
+    }
+
+    s2[j] = '\0'; 
+}
+
+
+int main(void) {
+    char s1[100], s2[200];
+
+    
+    const char *tests[] = {
+        "a-z", "A-Z", "0-9", "a-b-c", "-a-z", "a-z-", "z-a", "a-z0-9", "A-Ca-c0-3", NULL
+    };
+
+    for (int t = 0; tests[t] != NULL; t++) {
+        expand(tests[t], s2);
+        printf("Original: %-10s  Expanded: %s\n", tests[t], s2);
+    }
+
+    return 0;
+}
+
+```
 
 ```c
 ### 9. Power Function Examples
