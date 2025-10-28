@@ -1270,12 +1270,11 @@ int main(void) {
 }
 
 ```
-###Question 3.4 
+### Question 3.4
 
-in a twos complement number representation, our version of itoa dose not handle the largest negative number, that is the value of n equal to -2(wordsize)-1 explain why not modify it to print that value correctly regardless of the machine on which it runs
+In a two's complement number representation, our original version of `itoa` does not handle the largest negative number (i.e., `n = -2^(wordsize-1)`). Explain why this happens and modify it to print that value correctly regardless of the machine on which it runs.
 ```
 
-```c
 #include <stdio.h>
 #include <string.h>
 
@@ -1290,26 +1289,25 @@ void reverse(char s[])
     }
 }
 
+// Corrected itoa function that handles INT_MIN safely
 void itoa(int n, char s[])
 {
     int i = 0;
     unsigned int num;
-
-    
     int sign = n;
 
-    
+    // Convert to unsigned safely to avoid overflow
     if (n < 0)
-        num = (unsigned)(-(long)n);  
+        num = (unsigned)(-(long)n);  // promote to long before negation
     else
         num = n;
 
-    
+    // Convert number to string
     do {
         s[i++] = num % 10 + '0';
     } while ((num /= 10) > 0);
 
-   
+    // Add minus sign if original number was negative
     if (sign < 0)
         s[i++] = '-';
 
@@ -1320,18 +1318,13 @@ void itoa(int n, char s[])
 int main(void)
 {
     char s[20];
-    itoa(-2147483648, s);
-    printf("%s\n", s);
+    itoa(-2147483648, s);  // Largest negative number for 32-bit int
+    printf("%s\n", s);     // Output: -2147483648
     return 0;
 }
-```c
 
 ```
 ### 9. Power Function Example
-
-#### Basic Power Function
-```c
-#### Basic Power Function
 ```c
 #include <stdio.h>
 
