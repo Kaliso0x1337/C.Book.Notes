@@ -1219,6 +1219,7 @@ int main() {
 ```
 ### Question 3.3
 <p>Write a function expand(s1,s2) that expands shorthand notations a-z in the string s1 into the equivalent complete list abc...xyz in s2. Allow for letters of either case and digits, and be prepared to handle cases like a-b-c and z0-9 and -a-z Arrange that a leading or trailing - is taken litterally</p>
+```
 
 ```c
 #include <stdio.h>
@@ -1267,6 +1268,63 @@ int main(void) {
 
     return 0;
 }
+
+```
+###Question 3.4 
+
+in a twos complement number representation, our version of itoa dose not handle the largest negative number, that is the value of n equal to -2(wordsize)-1 explain why not modify it to print that value correctly regardless of the machine on which it runs
+```
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+void reverse(char s[])
+{
+    int i, j;
+    char temp;
+    for (i = 0, j = strlen(s) - 1; i < j; i++, j--) {
+        temp = s[i];
+        s[i] = s[j];
+        s[j] = temp;
+    }
+}
+
+void itoa(int n, char s[])
+{
+    int i = 0;
+    unsigned int num;
+
+    
+    int sign = n;
+
+    
+    if (n < 0)
+        num = (unsigned)(-(long)n);  
+    else
+        num = n;
+
+    
+    do {
+        s[i++] = num % 10 + '0';
+    } while ((num /= 10) > 0);
+
+   
+    if (sign < 0)
+        s[i++] = '-';
+
+    s[i] = '\0';
+    reverse(s);
+}
+
+int main(void)
+{
+    char s[20];
+    itoa(-2147483648, s);
+    printf("%s\n", s);
+    return 0;
+}
+```c
 
 ```
 ### 9. Power Function Example
